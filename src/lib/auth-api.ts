@@ -27,7 +27,9 @@ export interface CreateUserFormData {
 
 export const authApi = {
   async login(loginData: LoginFormData) {
-    const { data } = await api.post("/auth/login", loginData);
+    const { data } = await api.post("/auth/login", loginData, {
+      withCredentials: true,
+    });
     return data;
   },
 
@@ -37,7 +39,7 @@ export const authApi = {
   },
 
   async createUser(userData: CreateUserFormData) {
-    console.log('helllllllllllllllo jee');
+
     const { data } = await api.post("/users", userData);
     return data;
   },
