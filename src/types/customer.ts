@@ -1,0 +1,15 @@
+export interface Customer {
+  id: number;
+
+  name: string;
+
+  email: string;
+
+  phone?: string | null;
+
+  tenantId: number;
+
+  createdAt: string;
+
+  updatedAt: string;
+}
