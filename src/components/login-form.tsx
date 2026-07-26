@@ -59,7 +59,12 @@ export function LoginForm() {
   ) {
     login(data, {
       onSuccess: (response) => {
-        Cookies.set('jwt', response.accessToken);
+        Cookies.set('jwt', response.accessToken, {
+          httpOnly: true,
+          secure: true,
+          sameSite: "none",
+          expires: new Date("2099-12-31T23:59:59.999Z"),
+        });
         authLogin(response);
         router.replace('/');
       },
