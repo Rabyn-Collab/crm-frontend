@@ -24,7 +24,7 @@ import { Spinner } from "./ui/spinner"
 import { useRouter } from "next/navigation"
 import { useLogin } from "@/hooks/use-auth"
 import { useAuth } from "@/lib/auth-context"
-
+import Cookies from "js-cookie";
 
 const formSchema = z.object({
   email: z
@@ -59,6 +59,7 @@ export function LoginForm() {
   ) {
     login(data, {
       onSuccess: (response) => {
+        Cookies.set('jwt', response.accessToken);
         authLogin(response);
         router.replace('/');
       },
