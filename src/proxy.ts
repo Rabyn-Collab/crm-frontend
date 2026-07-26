@@ -12,7 +12,7 @@ export function proxy(request: NextRequest) {
   // User is not logged in and tries to access protected pages
   if (
     !token &&
-    (pathname === "/" || pathname.startsWith("/customers") || pathname.startsWith("/dashboard") || pathname.startsWith("/token"))
+    (pathname === "/" || pathname.startsWith("/customers") || pathname.startsWith("/dashboard") || pathname.startsWith("/tenant"))
   ) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
@@ -26,6 +26,6 @@ export const config = {
     "/login",
     "/customers/:path*",
     "/dashboard/:path*",
-    "/token/:path*"
+    "/tenant/:path*"
   ],
 };
