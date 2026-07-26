@@ -8,6 +8,7 @@ import {
   ReactNode,
 } from "react";
 
+import Cookies from "js-cookie";
 export type User = {
   id: number;
   email: string;
@@ -55,6 +56,7 @@ export function AuthProvider({
   const logout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
+    Cookies.remove("jwt");
     setUser(null);
   };
 
